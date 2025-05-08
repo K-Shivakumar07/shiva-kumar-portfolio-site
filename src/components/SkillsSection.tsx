@@ -39,7 +39,7 @@ const SkillsSection = () => {
                     <span className="font-medium">{skill.name}</span>
                     <span className="text-sm text-gray-500">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2 bg-gray-200" indicatorClassName="bg-tech-purple" />
+                  <Progress value={skill.level} className="h-2 bg-gray-200" />
                 </div>
               ))}
             </div>
@@ -54,7 +54,7 @@ const SkillsSection = () => {
                     <span className="font-medium">{skill.name}</span>
                     <span className="text-sm text-gray-500">{skill.level}%</span>
                   </div>
-                  <Progress value={skill.level} className="h-2 bg-gray-200" indicatorClassName="bg-tech-purple" />
+                  <Progress value={skill.level} className="h-2 bg-gray-200" />
                 </div>
               ))}
             </div>
