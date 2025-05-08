@@ -8,26 +8,34 @@ import { Button } from './ui/button';
 const ProjectsSection = () => {
   const projects = [
     {
-      title: 'AI Image Recognition System',
-      description: 'Developed a machine learning model to recognize and classify images using Python and TensorFlow.',
-      image: 'https://images.unsplash.com/photo-1649972904349-6e44c42644a7?auto=format&fit=crop&w=800&q=80',
-      techs: ['Python', 'TensorFlow', 'OpenCV', 'NumPy'],
+      title: 'TO-DO-LIST',
+      description: 'A task management application with features to add, edit, delete, and mark tasks as complete.',
+      image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80',
+      techs: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
       github: '#',
       liveDemo: '#'
     },
     {
-      title: 'E-Commerce Platform',
-      description: 'Built a responsive e-commerce website with product catalog, cart functionality, and user authentication.',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=800&q=80',
-      techs: ['React', 'Node.js', 'MySQL', 'CSS'],
+      title: 'GUESS NUMBER',
+      description: 'An interactive number guessing game where users have to guess a randomly generated number within a range.',
+      image: 'https://images.unsplash.com/photo-1553481187-be93c21490a9?auto=format&fit=crop&w=800&q=80',
+      techs: ['JavaScript', 'HTML', 'CSS', 'DOM Manipulation'],
       github: '#',
       liveDemo: '#'
     },
     {
-      title: 'Data Structure Visualizer',
-      description: 'Interactive web application to visualize various data structures and algorithms in real-time.',
-      image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=800&q=80',
-      techs: ['JavaScript', 'HTML5', 'CSS3', 'D3.js'],
+      title: 'CALCULATOR',
+      description: 'A fully functional calculator web application that can perform basic arithmetic operations.',
+      image: 'https://images.unsplash.com/photo-1587145820266-a5951ee6f620?auto=format&fit=crop&w=800&q=80',
+      techs: ['JavaScript', 'HTML', 'CSS', 'Math Operations'],
+      github: '#',
+      liveDemo: '#'
+    },
+    {
+      title: 'STATIC AMAZON WEBSITE INTERFACE',
+      description: 'A clone of the Amazon website interface with static content, focusing on the UI components.',
+      image: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80',
+      techs: ['HTML', 'CSS', 'Responsive Design', 'UI/UX'],
       github: '#',
       liveDemo: '#'
     }
@@ -80,15 +88,6 @@ const ProjectsSection = () => {
               </CardFooter>
             </Card>
           ))}
-        </div>
-        
-        <div className="text-center mt-12">
-          <Button 
-            variant="outline" 
-            className="border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
-          >
-            View All Projects <Github size={16} className="ml-2" />
-          </Button>
         </div>
       </div>
     </section>
