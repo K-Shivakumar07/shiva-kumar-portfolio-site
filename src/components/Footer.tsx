@@ -41,8 +41,10 @@ const Footer = () => {
             <h4 className="text-lg font-semibold mb-4">Connect</h4>
             <div className="flex space-x-4">
               <a 
-                href="#" 
+                href="https://github.com/K-Shivakumar07" 
                 className="text-gray-300 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -50,8 +52,10 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="#" 
+                href="https://linkedin.com/in/kasula-shiva-kumar" 
                 className="text-gray-300 hover:text-white transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
@@ -59,7 +63,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="mailto:contact@example.com" 
+                href="mailto:shivakumarkasula07@gmail.com" 
                 className="text-gray-300 hover:text-white transition-colors"
                 aria-label="Email"
               >
