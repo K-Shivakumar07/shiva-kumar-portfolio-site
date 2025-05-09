@@ -2,18 +2,256 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { Github, ExternalLink, X, Calculator, Thermometer } from 'lucide-react';
+import { Github, ExternalLink, X, Calculator, Thermometer, ShoppingCart } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from './ui/dialog';
 
 const ProjectsSection = () => {
   const projects = [
     {
+      title: 'STATIC AMAZON WEBSITE INTERFACE',
+      description: 'A static clone of the Amazon website with responsive design, product listings, and a user-friendly interface.',
+      image: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80',
+      techs: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
+      github: 'https://github.com/K-Shivakumar07/Amazon.com-clone.git',
+      liveDemo: 'http://127.0.0.1:5501/project1/index.html',
+      icon: <ShoppingCart className="mr-2" size={20} />,
+      demoCode: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Amazon Clone</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+    body { background-color: #EAEDED; }
+    
+    /* Header Styles */
+    header {
+      background-color: #131921;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+    }
+    .logo {
+      width: 100px;
+      margin-right: 20px;
+    }
+    .search-bar {
+      flex: 1;
+      display: flex;
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 4px 0 0 4px;
+    }
+    .search-bar button {
+      background-color: #FEBD69;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+    }
+    .nav-links {
+      display: flex;
+      margin-left: 20px;
+    }
+    .nav-link {
+      margin: 0 10px;
+      cursor: pointer;
+    }
+    
+    /* Navigation Bar */
+    nav {
+      background-color: #232F3E;
+      color: white;
+      padding: 8px 20px;
+      display: flex;
+    }
+    nav div {
+      margin-right: 15px;
+      cursor: pointer;
+    }
+    
+    /* Hero Section */
+    .hero {
+      background-image: url('https://m.media-amazon.com/images/I/61CiqVTRBEL._SX3000_.jpg');
+      background-size: cover;
+      height: 300px;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+    
+    /* Products Section */
+    .products {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      max-width: 1500px;
+      margin: 0 auto;
+    }
+    .product-card {
+      background-color: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .product-title {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .product-price {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .product-rating {
+      color: #FFA41C;
+      margin-bottom: 10px;
+    }
+    .product-card button {
+      background-color: #FFD814;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 20px;
+      cursor: pointer;
+      width: 100%;
+    }
+    .product-card button:hover {
+      background-color: #F7CA00;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #131921;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .footer-links div {
+      margin: 0 15px;
+      cursor: pointer;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+      nav {
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+      .products {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">Amazon</div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search Amazon">
+      <button>Search</button>
+    </div>
+    <div class="nav-links">
+      <div class="nav-link">Sign In</div>
+      <div class="nav-link">Orders</div>
+      <div class="nav-link">Cart</div>
+    </div>
+  </header>
+  
+  <!-- Navigation Bar -->
+  <nav>
+    <div>All</div>
+    <div>Today's Deals</div>
+    <div>Customer Service</div>
+    <div>Registry</div>
+    <div>Gift Cards</div>
+    <div>Sell</div>
+  </nav>
+  
+  <!-- Hero Section -->
+  <div class="hero"></div>
+  
+  <!-- Products Section -->
+  <div class="products">
+    <!-- Product 1 -->
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_UY218_.jpg" alt="Headphones">
+      <div class="product-title">Wireless Bluetooth Headphones</div>
+      <div class="product-price">$59.99</div>
+      <div class="product-rating">★★★★☆</div>
+      <button>Add to Cart</button>
+    </div>
+    
+    <!-- Product 2 -->
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/71Swqqe7XAL._AC_UY218_.jpg" alt="Smart Watch">
+      <div class="product-title">Smart Watch with Heart Rate Monitor</div>
+      <div class="product-price">$129.99</div>
+      <div class="product-rating">★★★★★</div>
+      <button>Add to Cart</button>
+    </div>
+    
+    <!-- Product 3 -->
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/61Mp5Jc0SQL._AC_UY218_.jpg" alt="Bluetooth Speaker">
+      <div class="product-title">Portable Bluetooth Speaker</div>
+      <div class="product-price">$39.99</div>
+      <div class="product-rating">★★★★☆</div>
+      <button>Add to Cart</button>
+    </div>
+    
+    <!-- Product 4 -->
+    <div class="product-card">
+      <img src="https://m.media-amazon.com/images/I/71NBQ2a52CL._AC_UY218_.jpg" alt="Laptop">
+      <div class="product-title">15.6" Laptop, 8GB RAM, 256GB SSD</div>
+      <div class="product-price">$649.99</div>
+      <div class="product-rating">★★★★☆</div>
+      <button>Add to Cart</button>
+    </div>
+  </div>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <div>About Us</div>
+      <div>Careers</div>
+      <div>Sell on Amazon</div>
+      <div>Help</div>
+    </div>
+    <p>© Amazon Clone. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+      `
+    },
+    {
       title: 'TO-DO-LIST',
       description: 'A task management application with features to add, edit, delete, and mark tasks as complete.',
       image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80',
       techs: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
       github: 'https://github.com/K-Shivakumar07/To-do-list',
+      liveDemo: 'https://shivakumar-to-do-list.netlify.app/',
       icon: null,
       demoCode: `
 <!DOCTYPE html>
@@ -357,6 +595,14 @@ const ProjectsSection = () => {
     .transaction.income { border-right: 5px solid #2ecc71; }
     .transaction.expense { border-right: 5px solid #e74c3c; }
     .delete-btn { background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; }
+    .actions { display: flex; justify-content: space-between; gap: 10px; margin-bottom: 20px; }
+    .actions button { flex: 1; }
+    .income-btn { background-color: #2ecc71; }
+    .income-btn:hover { background-color: #27ae60; }
+    .expense-btn { background-color: #e74c3c; }
+    .expense-btn:hover { background-color: #c0392b; }
+    #income-form, #expense-form { display: none; }
+    #income-form.active, #expense-form.active { display: block; }
   </style>
 </head>
 <body>
@@ -379,33 +625,61 @@ const ProjectsSection = () => {
       </div>
     </div>
     
+    <div class="actions">
+      <button id="show-income-btn" class="income-btn">Add Income</button>
+      <button id="show-expense-btn" class="expense-btn">Add Expense</button>
+    </div>
+    
+    <form id="income-form">
+      <div class="form-group">
+        <label for="income-description">Description</label>
+        <input type="text" id="income-description" placeholder="Enter income description..." required>
+      </div>
+      
+      <div class="form-group">
+        <label for="income-amount">Amount</label>
+        <input type="number" id="income-amount" placeholder="Enter amount..." step="0.01" min="0" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="income-category">Category</label>
+        <select id="income-category" required>
+          <option value="">Select category</option>
+          <option value="salary">Salary</option>
+          <option value="freelance">Freelance</option>
+          <option value="investments">Investments</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      
+      <button type="submit">Add Income</button>
+    </form>
+    
     <form id="expense-form">
       <div class="form-group">
-        <label for="description">Description</label>
-        <input type="text" id="description" placeholder="Enter description..." required>
+        <label for="expense-description">Description</label>
+        <input type="text" id="expense-description" placeholder="Enter expense description..." required>
       </div>
       
       <div class="form-group">
-        <label for="amount">Amount</label>
-        <input type="number" id="amount" placeholder="Enter amount..." step="0.01" required>
-        <small>For expenses, use negative values (-100)</small>
+        <label for="expense-amount">Amount</label>
+        <input type="number" id="expense-amount" placeholder="Enter amount..." step="0.01" min="0" required>
       </div>
       
       <div class="form-group">
-        <label for="category">Category</label>
-        <select id="category" required>
+        <label for="expense-category">Category</label>
+        <select id="expense-category" required>
           <option value="">Select category</option>
           <option value="food">Food</option>
           <option value="transportation">Transportation</option>
           <option value="entertainment">Entertainment</option>
           <option value="utilities">Utilities</option>
           <option value="rent">Rent</option>
-          <option value="salary">Salary</option>
           <option value="other">Other</option>
         </select>
       </div>
       
-      <button type="submit">Add Transaction</button>
+      <button type="submit">Add Expense</button>
     </form>
     
     <div class="transaction-list">
@@ -420,10 +694,22 @@ const ProjectsSection = () => {
       const incomeEl = document.getElementById('income-total');
       const expenseEl = document.getElementById('expense-total');
       const transactionsEl = document.getElementById('transactions');
-      const form = document.getElementById('expense-form');
-      const descriptionInput = document.getElementById('description');
-      const amountInput = document.getElementById('amount');
-      const categoryInput = document.getElementById('category');
+      
+      const showIncomeBtn = document.getElementById('show-income-btn');
+      const showExpenseBtn = document.getElementById('show-expense-btn');
+      const incomeForm = document.getElementById('income-form');
+      const expenseForm = document.getElementById('expense-form');
+      
+      // Toggle forms
+      showIncomeBtn.addEventListener('click', function() {
+        incomeForm.classList.add('active');
+        expenseForm.classList.remove('active');
+      });
+      
+      showExpenseBtn.addEventListener('click', function() {
+        expenseForm.classList.add('active');
+        incomeForm.classList.remove('active');
+      });
       
       // Get transactions from localStorage or initialize empty array
       let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
@@ -432,7 +718,15 @@ const ProjectsSection = () => {
       init();
       
       // Event listeners
-      form.addEventListener('submit', addTransaction);
+      incomeForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        addTransaction(e, true);
+      });
+      
+      expenseForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        addTransaction(e, false);
+      });
       
       function init() {
         transactionsEl.innerHTML = '';
@@ -487,8 +781,11 @@ const ProjectsSection = () => {
         expenseEl.textContent = '$' + expense;
       }
       
-      function addTransaction(e) {
-        e.preventDefault();
+      function addTransaction(e, isIncome) {
+        const form = isIncome ? incomeForm : expenseForm;
+        const descriptionInput = form.querySelector('[id$="description"]');
+        const amountInput = form.querySelector('[id$="amount"]');
+        const categoryInput = form.querySelector('[id$="category"]');
         
         // Validate form
         if (descriptionInput.value.trim() === '' || amountInput.value.trim() === '' || categoryInput.value === '') {
@@ -500,7 +797,7 @@ const ProjectsSection = () => {
         const transaction = {
           id: generateID(),
           description: descriptionInput.value,
-          amount: +amountInput.value,
+          amount: isIncome ? +amountInput.value : -amountInput.value, // Positive for income, negative for expense
           category: categoryInput.value,
           date: new Date()
         };
@@ -521,6 +818,9 @@ const ProjectsSection = () => {
         descriptionInput.value = '';
         amountInput.value = '';
         categoryInput.value = '';
+        
+        // Hide the active form
+        form.classList.remove('active');
       }
       
       function generateID() {
@@ -1230,12 +1530,21 @@ const ProjectsSection = () => {
                         </div>
                       </DialogHeader>
                       <div className="flex-1 overflow-hidden">
-                        <iframe
-                          srcDoc={project.demoCode}
-                          title={project.title}
-                          className="w-full h-full border-none"
-                          sandbox="allow-scripts allow-forms"
-                        ></iframe>
+                        {project.liveDemo ? (
+                          <iframe
+                            src={project.liveDemo}
+                            title={project.title}
+                            className="w-full h-full border-none"
+                            sandbox="allow-scripts allow-forms allow-same-origin"
+                          ></iframe>
+                        ) : (
+                          <iframe
+                            srcDoc={project.demoCode}
+                            title={project.title}
+                            className="w-full h-full border-none"
+                            sandbox="allow-scripts allow-forms"
+                          ></iframe>
+                        )}
                       </div>
                     </div>
                   </DialogContent>
@@ -1250,4 +1559,3 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
-
