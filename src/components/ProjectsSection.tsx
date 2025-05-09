@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
-import { Github, ExternalLink, X, Calculator, Thermometer, Quiz } from 'lucide-react';
+import { Github, ExternalLink, X, Calculator, Thermometer } from 'lucide-react';
 import { Button } from './ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from './ui/dialog';
 
@@ -124,7 +124,7 @@ const ProjectsSection = () => {
       image: 'https://images.unsplash.com/photo-1606326608690-4e0281b1e588?auto=format&fit=crop&w=800&q=80',
       techs: ['JavaScript', 'HTML', 'CSS', 'API Integration'],
       github: 'https://github.com/K-Shivakumar07/Quiz-Game',
-      icon: <Quiz className="mr-2" size={20} />,
+      icon: <Thermometer className="mr-2" size={20} />,
       demoCode: `
 <!DOCTYPE html>
 <html lang="en">
@@ -1250,3 +1250,4 @@ const ProjectsSection = () => {
 };
 
 export default ProjectsSection;
+
