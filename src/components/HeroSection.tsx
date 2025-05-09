@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
 import { Button } from './ui/button';
@@ -50,7 +49,7 @@ const HeroSection = () => {
             
             <div className="flex space-x-4 mt-8">
               <a 
-                href="https://github.com" 
+                href="https://github.com/K-Shivakumar07" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-tech-softGray p-3 rounded-full text-tech-purple hover:bg-tech-purple hover:text-white transition-all"
@@ -59,7 +58,7 @@ const HeroSection = () => {
                 <Github size={20} />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href="https://linkedin.com/in/kasula-shiva-kumar" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="bg-tech-softGray p-3 rounded-full text-tech-purple hover:bg-tech-purple hover:text-white transition-all"
@@ -68,7 +67,7 @@ const HeroSection = () => {
                 <Linkedin size={20} />
               </a>
               <a 
-                href="mailto:contact@example.com" 
+                href="mailto:shivakumarkasula07@gmail.com" 
                 className="bg-tech-softGray p-3 rounded-full text-tech-purple hover:bg-tech-purple hover:text-white transition-all"
                 aria-label="Email Contact"
               >
