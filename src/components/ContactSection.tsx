@@ -1,12 +1,73 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Textarea } from './ui/textarea';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { useToast } from './ui/use-toast';
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({ ...prev, [id]: value }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name || !formData.email || !formData.message) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive"
+      });
+      return;
+    }
+    
+    setIsSubmitting(true);
+
+    try {
+      // Construct mailto URL with form data
+      const mailtoUrl = `mailto:shivakumarkasula07@gmail.com?subject=${encodeURIComponent(formData.subject || 'Contact Form Submission')}&body=${encodeURIComponent(
+        `Name: ${formData.name}\nEmail: ${formData.email}\n\n${formData.message}`
+      )}`;
+      
+      // Open the user's email client
+      window.location.href = mailtoUrl;
+      
+      // Reset form after submission
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+      });
+      
+      toast({
+        title: "Success!",
+        description: "Your email client has been opened. Please send the email to complete your message.",
+      });
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to open email client. Please try again.",
+        variant: "destructive"
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <section id="contact" className="py-20 bg-white">
       <div className="section-container">
@@ -102,7 +163,7 @@ const ContactSection = () => {
             <Card className="card-hover">
               <CardContent className="p-6">
                 <h3 className="text-xl font-bold mb-6 text-tech-blue">Send Me a Message</h3>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                     <div className="space-y-2">
                       <label htmlFor="name" className="text-sm font-medium text-gray-700">
@@ -113,6 +174,9 @@ const ContactSection = () => {
                         type="text" 
                         placeholder="John Doe"
                         className="w-full"
+                        value={formData.name}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                     <div className="space-y-2">
@@ -124,6 +188,9 @@ const ContactSection = () => {
                         type="email" 
                         placeholder="john@example.com"
                         className="w-full"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
@@ -137,6 +204,8 @@ const ContactSection = () => {
                       type="text" 
                       placeholder="How can I help you?"
                       className="w-full"
+                      value={formData.subject}
+                      onChange={handleChange}
                     />
                   </div>
                   
@@ -148,11 +217,18 @@ const ContactSection = () => {
                       id="message" 
                       placeholder="Your message here..."
                       className="min-h-[150px] w-full"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
                     />
                   </div>
                   
-                  <Button type="submit" className="w-full bg-tech-purple hover:bg-tech-accent">
-                    Send Message <Send size={16} className="ml-2" />
+                  <Button 
+                    type="submit" 
+                    className="w-full bg-tech-purple hover:bg-tech-accent"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'} <Send size={16} className="ml-2" />
                   </Button>
                 </form>
               </CardContent>

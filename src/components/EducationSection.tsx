@@ -9,7 +9,7 @@ const EducationSection = () => {
       specialization: 'Artificial Intelligence and Machine Learning',
       institution: 'Chaitanya Deemed To Be University',
       location: 'Hyderabad, India',
-      period: '2020 - 2024',
+      period: '2023 - 2027',
       description: 'Specializing in AI and ML with a focus on practical applications and research projects.'
     },
     {
@@ -17,8 +17,16 @@ const EducationSection = () => {
       specialization: 'Science (Mathematics, Physics, Chemistry)',
       institution: 'Sri Chaitanya Junior College',
       location: 'Hyderabad, India',
-      period: '2018 - 2020',
+      period: '2021 - 2023',
       description: 'Focused on core science subjects with strong foundations in mathematics and physics.'
+    },
+    {
+      degree: 'Secondary School Certificate (SSC)',
+      specialization: 'General Education',
+      institution: 'Saraswathi Vidhyanikethan High School',
+      location: 'Hyderabad, India',
+      period: '2008 - 2021',
+      description: 'Completed secondary education with a strong foundation in all core subjects.'
     }
   ];
 
