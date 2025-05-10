@@ -12,11 +12,13 @@ import {
   DialogTrigger,
   DialogFooter,
 } from "./ui/dialog";
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const HeroSection = () => {
   const [profileImage, setProfileImage] = useState<string>("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80");
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const isMobile = useIsMobile();
   
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -51,8 +53,8 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-5"></div>
       
       <div className="section-container relative z-10">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div className="animate-fade-in">
+        <div className={`grid ${isMobile ? 'grid-cols-1' : 'md:grid-cols-2'} gap-8 items-center`}>
+          <div className={`animate-fade-in ${isMobile ? 'order-2' : ''}`}>
             <p className="text-tech-purple font-medium mb-2">Hello, I'm</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
               K. Shiva Kumar
@@ -109,23 +111,21 @@ const HeroSection = () => {
             </div>
           </div>
           
-          <div className="hidden md:block">
+          <div className={`${isMobile ? 'order-1 mb-8' : 'order-2'} flex justify-center md:justify-end`}>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
-                <div className="w-full max-w-[280px] mx-auto cursor-pointer overflow-hidden rounded-xl hover:shadow-md transition-all">
-                  <AspectRatio ratio={2/3} className="bg-tech-softGray">
-                    {profileImage ? (
-                      <img 
-                        src={profileImage} 
-                        alt="Profile" 
-                        className="object-cover w-full h-full rounded-xl" 
-                      />
-                    ) : (
-                      <div className="flex items-center justify-center h-full w-full">
-                        <Image className="h-12 w-12 text-tech-purple" />
-                      </div>
-                    )}
-                  </AspectRatio>
+                <div className="w-full max-w-[280px] cursor-pointer overflow-hidden rounded-xl hover:shadow-md transition-all">
+                  {profileImage ? (
+                    <img 
+                      src={profileImage} 
+                      alt="Profile" 
+                      className="object-cover w-full h-auto rounded-xl" 
+                    />
+                  ) : (
+                    <div className="flex items-center justify-center h-full w-full bg-tech-softGray aspect-auto min-h-[400px]">
+                      <Image className="h-12 w-12 text-tech-purple" />
+                    </div>
+                  )}
                 </div>
               </DialogTrigger>
               <DialogContent>
