@@ -1,8 +1,8 @@
 
 import React, { useState, useRef } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Upload } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Upload, Image } from 'lucide-react';
 import { Button } from './ui/button';
-import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
+import { AspectRatio } from './ui/aspect-ratio';
 
 const HeroSection = () => {
   const [profileImage, setProfileImage] = useState<string>("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80");
@@ -100,14 +100,23 @@ const HeroSection = () => {
           
           <div className="hidden md:block">
             <div className="relative">
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-tech-purple to-tech-accent rounded-full blur opacity-75"></div>
-              <div className="relative bg-white rounded-full p-2">
-                <Avatar className="w-64 h-64 mx-auto cursor-pointer" onClick={triggerFileInput}>
-                  <AvatarImage src={profileImage} alt="Profile" className="object-cover rounded-full" />
-                  <AvatarFallback className="bg-tech-softGray flex items-center justify-center">
-                    <Upload className="h-10 w-10 text-tech-purple" />
-                  </AvatarFallback>
-                </Avatar>
+              <div className="absolute -inset-1 bg-gradient-to-r from-tech-purple to-tech-accent rounded-xl blur opacity-75"></div>
+              <div className="relative bg-white p-3 rounded-xl">
+                <div className="w-full max-w-[280px] mx-auto cursor-pointer overflow-hidden rounded-lg border-2 border-tech-softGray hover:border-tech-purple transition-all" onClick={triggerFileInput}>
+                  <AspectRatio ratio={2/3} className="bg-tech-softGray">
+                    {profileImage ? (
+                      <img 
+                        src={profileImage} 
+                        alt="Profile" 
+                        className="object-cover w-full h-full" 
+                      />
+                    ) : (
+                      <div className="flex items-center justify-center h-full w-full">
+                        <Image className="h-12 w-12 text-tech-purple" />
+                      </div>
+                    )}
+                  </AspectRatio>
+                </div>
                 <input 
                   type="file" 
                   ref={fileInputRef} 
@@ -120,9 +129,9 @@ const HeroSection = () => {
                   onClick={triggerFileInput} 
                   variant="outline" 
                   size="sm" 
-                  className="absolute bottom-2 right-2 bg-white border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
+                  className="mt-2 w-full bg-white border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
                 >
-                  <Upload className="h-4 w-4 mr-1" /> Upload
+                  <Upload className="h-4 w-4 mr-2" /> Upload Photo
                 </Button>
               </div>
             </div>
