@@ -1,8 +1,13 @@
-import React from 'react';
-import { ArrowRight, Github, Linkedin, Mail } from 'lucide-react';
+
+import React, { useState, useRef } from 'react';
+import { ArrowRight, Github, Linkedin, Mail, Upload } from 'lucide-react';
 import { Button } from './ui/button';
+import { Avatar, AvatarImage, AvatarFallback } from './ui/avatar';
 
 const HeroSection = () => {
+  const [profileImage, setProfileImage] = useState<string>("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80");
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
     if (section) {
@@ -11,6 +16,23 @@ const HeroSection = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        if (e.target?.result) {
+          setProfileImage(e.target.result as string);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   return (
@@ -80,11 +102,28 @@ const HeroSection = () => {
             <div className="relative">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-tech-purple to-tech-accent rounded-full blur opacity-75"></div>
               <div className="relative bg-white rounded-full p-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80" 
-                  alt="Coding" 
-                  className="rounded-full w-full h-full object-cover"
+                <Avatar className="w-64 h-64 mx-auto cursor-pointer" onClick={triggerFileInput}>
+                  <AvatarImage src={profileImage} alt="Profile" className="object-cover rounded-full" />
+                  <AvatarFallback className="bg-tech-softGray flex items-center justify-center">
+                    <Upload className="h-10 w-10 text-tech-purple" />
+                  </AvatarFallback>
+                </Avatar>
+                <input 
+                  type="file" 
+                  ref={fileInputRef} 
+                  onChange={handleFileChange} 
+                  accept="image/*" 
+                  className="hidden" 
+                  id="profile-upload"
                 />
+                <Button 
+                  onClick={triggerFileInput} 
+                  variant="outline" 
+                  size="sm" 
+                  className="absolute bottom-2 right-2 bg-white border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
+                >
+                  <Upload className="h-4 w-4 mr-1" /> Upload
+                </Button>
               </div>
             </div>
           </div>
