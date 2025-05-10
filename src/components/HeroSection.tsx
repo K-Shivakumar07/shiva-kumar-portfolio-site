@@ -1,5 +1,5 @@
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ArrowRight, Github, Linkedin, Mail, Image } from 'lucide-react';
 import { Button } from './ui/button';
 import { AspectRatio } from './ui/aspect-ratio';
@@ -19,6 +19,21 @@ const HeroSection = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const isMobile = useIsMobile();
+  
+  // Load profile image from localStorage on component mount
+  useEffect(() => {
+    const savedImage = localStorage.getItem('profileImage');
+    if (savedImage) {
+      setProfileImage(savedImage);
+    }
+  }, []);
+
+  // Save profile image to localStorage when it changes
+  useEffect(() => {
+    if (profileImage) {
+      localStorage.setItem('profileImage', profileImage);
+    }
+  }, [profileImage]);
   
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
