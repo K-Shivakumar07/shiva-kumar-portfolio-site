@@ -1,12 +1,22 @@
 
 import React, { useState, useRef } from 'react';
-import { ArrowRight, Github, Linkedin, Mail, Upload, Image } from 'lucide-react';
+import { ArrowRight, Github, Linkedin, Mail, Image } from 'lucide-react';
 import { Button } from './ui/button';
 import { AspectRatio } from './ui/aspect-ratio';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "./ui/dialog";
 
 const HeroSection = () => {
   const [profileImage, setProfileImage] = useState<string>("https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?auto=format&fit=crop&w=800&q=80");
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -25,6 +35,7 @@ const HeroSection = () => {
       reader.onload = (e) => {
         if (e.target?.result) {
           setProfileImage(e.target.result as string);
+          setIsDialogOpen(false);
         }
       };
       reader.readAsDataURL(file);
@@ -99,16 +110,15 @@ const HeroSection = () => {
           </div>
           
           <div className="hidden md:block">
-            <div className="relative">
-              <div className="absolute -inset-1 bg-gradient-to-r from-tech-purple to-tech-accent rounded-xl blur opacity-75"></div>
-              <div className="relative bg-white p-3 rounded-xl">
-                <div className="w-full max-w-[280px] mx-auto cursor-pointer overflow-hidden rounded-lg border-2 border-tech-softGray hover:border-tech-purple transition-all" onClick={triggerFileInput}>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <div className="w-full max-w-[280px] mx-auto cursor-pointer overflow-hidden rounded-xl hover:shadow-md transition-all">
                   <AspectRatio ratio={2/3} className="bg-tech-softGray">
                     {profileImage ? (
                       <img 
                         src={profileImage} 
                         alt="Profile" 
-                        className="object-cover w-full h-full" 
+                        className="object-cover w-full h-full rounded-xl" 
                       />
                     ) : (
                       <div className="flex items-center justify-center h-full w-full">
@@ -117,24 +127,38 @@ const HeroSection = () => {
                     )}
                   </AspectRatio>
                 </div>
-                <input 
-                  type="file" 
-                  ref={fileInputRef} 
-                  onChange={handleFileChange} 
-                  accept="image/*" 
-                  className="hidden" 
-                  id="profile-upload"
-                />
-                <Button 
-                  onClick={triggerFileInput} 
-                  variant="outline" 
-                  size="sm" 
-                  className="mt-2 w-full bg-white border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
-                >
-                  <Upload className="h-4 w-4 mr-2" /> Upload Photo
-                </Button>
-              </div>
-            </div>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Change Profile Photo</DialogTitle>
+                  <DialogDescription>
+                    Select a new profile photo to display on your portfolio.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                  <input 
+                    type="file" 
+                    ref={fileInputRef} 
+                    onChange={handleFileChange} 
+                    accept="image/*" 
+                    className="hidden" 
+                    id="profile-upload"
+                  />
+                  <Button 
+                    onClick={triggerFileInput} 
+                    variant="outline" 
+                    className="w-full bg-white border-tech-purple text-tech-purple hover:bg-tech-purple hover:text-white"
+                  >
+                    Choose a Photo
+                  </Button>
+                </div>
+                <DialogFooter>
+                  <Button onClick={() => setIsDialogOpen(false)} variant="outline">
+                    Cancel
+                  </Button>
+                </DialogFooter>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
