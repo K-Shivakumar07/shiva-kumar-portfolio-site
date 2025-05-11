@@ -14,7 +14,7 @@ const ProjectsSection = () => {
       image: 'https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?auto=format&fit=crop&w=800&q=80',
       techs: ['HTML', 'CSS', 'JavaScript', 'Responsive Design'],
       github: 'https://github.com/K-Shivakumar07/Amazon.com-clone.git',
-      liveDemo: 'http://127.0.0.1:5501/project1/index.html',
+      liveDemo: '', // Removed the local URL
       icon: <ShoppingCart className="mr-2" size={20} />,
       demoCode: `
 <!DOCTYPE html>
