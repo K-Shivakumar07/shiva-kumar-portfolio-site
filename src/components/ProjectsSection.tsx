@@ -23,7 +23,7 @@ const ProjectsSection = () => {
       image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?auto=format&fit=crop&w=800&q=80',
       techs: ['HTML', 'CSS', 'JavaScript', 'LocalStorage'],
       github: 'https://github.com/K-Shivakumar07/To-do-list',
-      liveDemo: 'https://shivakumar-to-do-list.netlify.app/',
+      liveDemo: 'https://shiva-to-do-list.netlify.app',
       icon: null,
       demoCode: `
 <!DOCTYPE html>
