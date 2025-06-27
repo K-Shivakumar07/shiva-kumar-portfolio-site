@@ -85,12 +85,11 @@ const HeroSection = () => {
             {/* Right side - Profile photo */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <div className="w-80 h-80 md:w-96 md:h-96 rounded-full overflow-hidden border-4 border-tech-purple shadow-2xl">
+                <div className="max-w-sm w-full border-4 border-tech-purple rounded-2xl overflow-hidden shadow-2xl">
                   <img 
                     src="/lovable-uploads/5b189953-dda6-4631-a5cd-14b0a43d501a.png" 
                     alt="K. Shiva Kumar Profile Photo"
-                    className="w-full h-full object-cover object-top"
-                    style={{ objectPosition: '50% 20%' }}
+                    className="w-full h-auto object-cover"
                   />
                 </div>
                 {/* Decorative elements */}
