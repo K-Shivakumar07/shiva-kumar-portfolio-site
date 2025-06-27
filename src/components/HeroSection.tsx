@@ -89,7 +89,8 @@ const HeroSection = () => {
                   <img 
                     src="/lovable-uploads/5b189953-dda6-4631-a5cd-14b0a43d501a.png" 
                     alt="K. Shiva Kumar Profile Photo"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
+                    style={{ objectPosition: '50% 20%' }}
                   />
                 </div>
                 {/* Decorative elements */}
