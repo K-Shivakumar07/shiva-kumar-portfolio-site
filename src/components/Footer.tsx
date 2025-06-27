@@ -52,10 +52,14 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="https://linkedin.com/in/kasula-shiva-kumar" 
+                href="linkedin://profile/kasula-shiva-kumar"
+                onClick={(e) => {
+                  // Fallback to web version if LinkedIn app is not available
+                  setTimeout(() => {
+                    window.open('https://linkedin.com/in/kasula-shiva-kumar', '_blank');
+                  }, 500);
+                }}
                 className="text-gray-300 hover:text-white transition-colors"
-                target="_blank"
-                rel="noopener noreferrer"
                 aria-label="LinkedIn"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
