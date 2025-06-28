@@ -64,13 +64,9 @@ const HeroSection = () => {
                   <Github size={20} />
                 </a>
                 <a 
-                  href="linkedin://profile/kasula-shiva-kumar"
-                  onClick={(e) => {
-                    // Fallback to web version if LinkedIn app is not available
-                    setTimeout(() => {
-                      window.open('https://linkedin.com/in/kasula-shiva-kumar', '_blank');
-                    }, 500);
-                  }}
+                  href="https://linkedin.com/in/kasula-shiva-kumar"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="bg-tech-softGray p-3 rounded-full text-tech-purple hover:bg-tech-purple hover:text-white transition-all"
                   aria-label="LinkedIn Profile"
                 >
