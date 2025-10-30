@@ -134,10 +134,10 @@ const PortfolioChatbot = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-tech-purple hover:bg-tech-accent hover:scale-110 transition-all z-50 flex items-center justify-center"
+          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-tech-purple hover:bg-tech-accent hover:scale-110 transition-all z-50 p-1 overflow-hidden"
           aria-label="Open chat"
         >
-          <img src={chatbotIcon} alt="Chat" className="w-6 h-6 object-contain" />
+          <img src={chatbotIcon} alt="Chat" className="w-full h-full object-cover rounded-full" />
         </Button>
       )}
 
