@@ -1,10 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Bot, User } from 'lucide-react';
+import { X, Send, Bot, User } from 'lucide-react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
 import { Card } from './ui/card';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
+import chatbotIcon from '@/assets/chatbot-icon.gif';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -133,10 +134,10 @@ const PortfolioChatbot = () => {
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-tech-purple hover:bg-tech-accent transition-all hover:scale-110 z-50"
+          className="fixed bottom-6 right-6 h-16 w-16 rounded-full shadow-lg bg-white hover:scale-110 transition-all z-50 p-0 overflow-hidden"
           aria-label="Open chat"
         >
-          <MessageCircle size={24} />
+          <img src={chatbotIcon} alt="Chat" className="w-full h-full object-cover" />
         </Button>
       )}
 
